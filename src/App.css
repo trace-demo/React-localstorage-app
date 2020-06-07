@@ -1,3 +1,30 @@
 .App {
   text-align: center;
 }
+.notes {
+  margin-top: 10px;
+}
+.note {
+  border: 1px solid black;
+  border-radius: 4px;
+  width: 400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+.note-content {
+  display: flex;
+}
+.note-text {
+  width: 200px;
+  padding: 0 10px;
+  word-wrap: break-word;
+}
+button {
+  height: 21px;
+}
+input {
+  width: 210px;
+}

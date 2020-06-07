@@ -33,6 +33,13 @@ class App extends React.Component {
       const json = JSON.stringify(this.state.notes);
       localStorage.setItem("notes", json);
     }
+
+    this.state.notes.forEach((note, index)=>{
+      if(preState.notes[index] !== note) {
+        const json = JSON.stringify(this.state.notes);
+        localStorage.setItem("notes", json);
+      }
+    })
   }
 
 
@@ -66,7 +73,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <h1>localStorage Note - Demo</h1>
+        <h1>Note localStorage - DeMO </h1>
 
         <textarea className="input" placeholder="Notes"
         value={this.state.currentNote} 
@@ -78,16 +85,45 @@ class App extends React.Component {
           Submit
         </button>
 
+
         {
+
           this.state.notes.map((note, index) => (
 
-          <div key={index}>
+            <div className="notes" key={index}>
 
-            {note}
-            <button onClick={()=>this.deleteNote(index)}>Delete</button>
-          
-          </div>)
+              {this.state.noteEditing === null || this.state.noteEditing !== index 
+              ?(
+                <div className="note">
+                  <div className="note-content">
+                    <div className="note-text">{note}</div>
+
+                    <button onClick={()=>this.setNoteEditing(index)}>
+                      Edit
+                    </button>
+
+                  </div>
+
+                  <button onClick={()=>this.deleteNote(index)}>
+                    Delete
+                  </button>
+                </div>  
+
+              ):(
+                <div className="note">
+                  <div className="note-content">
+                    <input type="text" value={this.state.currentEdit} 
+                    onChange = {event =>this.editNote(event)} />
+                    <button onClick={()=>this.submitEdit(index)}>Done</button>
+                  </div>
+                <button onClick={()=> this.deleteNote(index)}>Delete</button> 
+                </div>   
+              )
+            }            
+            </div>
+            )
           )
+
         }
 
       </div>
