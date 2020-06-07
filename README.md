@@ -1,2 +1,5 @@
 <br/>
-<img src="doc/app-demo.gif" align="center" alt="example screenshot">
+<div align="center">
+  <img src="doc/app-demo.gif" alt="example screenshot">
+</div>
+
